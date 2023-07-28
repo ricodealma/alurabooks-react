@@ -7,8 +7,9 @@ import ModalCadastroUsuario from "../ModalCadastroUsuario"
 import ModalLoginUsuario from "../ModalLoginUsuario"
 import logo from './assets/logo.png'
 import usuario from './assets/usuario.svg'
-import { gql, useQuery } from '@apollo/client'
 import './BarraNavegacao.css'
+import { useCarrinhoContext } from "../../contextApi/carrinho"
+import MiniCarrinho from "../MiniCarrinho"
 
 const BarraNavegacao = () => {
 
@@ -53,7 +54,7 @@ const BarraNavegacao = () => {
             <li>
                 <a href="#!">Categorias</a>
                 <ul className="submenu">
-                {categorias.map(categorias => (<li key={categorias.id}>
+                    {categorias.map(categorias => (<li key={categorias.id}>
                         <Link to={`/categorias/${categorias.slug}`}>
                             {categorias.nome}
                         </Link>
@@ -95,12 +96,15 @@ const BarraNavegacao = () => {
                         <Link to="/minha-conta/pedidos">Minha conta</Link>
                     </li>
                     <li>
-                        <BotaoNavegacao 
+                        <BotaoNavegacao
                             texto="Logout"
                             textoAltSrc="Icone representando um usuário"
                             imagemSrc={usuario}
                             onClick={efetuarLogout}
                         />
+                    </li>
+                    <li>
+                        <MiniCarrinho />
                     </li>
                 </>
             }
