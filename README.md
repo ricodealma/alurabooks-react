@@ -1,46 +1,45 @@
-# Getting Started with Create React App
+# AluraBooks - React Version
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+👋 Olá, eu sou o Rafael e este é o README do meu projeto de estudos para o AluraBooks! 😎
 
-## Available Scripts
+## Pontos Aprendidos 💡
 
-In the project directory, you can run:
+Neste projeto, me aventurei por diversos conceitos interessantes. Alguns dos principais pontos que destaco são:
 
-### `npm start`
+- 🚀 *Autenticação*: Aprendi como implementar um sistema de autenticação seguro para garantir que apenas usuários autorizados possam acessar determinadas rotas e recursos.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 📊 *Obtenção de Dados*: Descobri como buscar e manipular dados de uma API REST e GraphQL para exibir informações dos livros disponíveis no ecommerce AluraBooks.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- 🔗 *Integração e Requisições*: Aprendi a realizar integrações com APIs externas, fazendo requisições para obter informações e atualizar dados relevantes no projeto.
 
-### `npm test`
+- 📚 *Prática com Ecommerce*: Neste projeto, tive a oportunidade de desenvolver funcionalidades típicas de um ecommerce, como exibição dos livros, carrinho de compras e muito mais!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Sobre o Projeto 📓
 
-### `npm run build`
+Este projeto foi criado com o objetivo de aprimorar minhas habilidades em desenvolvimento web. Aqui, você encontrará o código necessário para executar o AluraBooks, um ecommerce fictício, mas que me permitiu aplicar conhecimentos valiosos e me divertir no processo!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ✔️ Técnicas e tecnologias utilizadas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `React`
+- `React Hooks`
+- `TypeScript`
+- `axios`
+- `Session Storage`
+- `TSDX`
+- `NPM` 
+- `Github Actions`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠️ Abrir e rodar o projeto
 
-### `npm run eject`
+Para abrir e rodar o projeto, execute `npm i` para instalar as dependências e `npm start` para inicar o projeto.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Depois, acesse <a href="http://localhost:3000/">http://localhost:3000/</a> no seu navegador.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contato 📞
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Fique à vontade para entrar em contato comigo se tiver alguma dúvida, sugestão ou apenas para trocar uma ideia sobre programação e tecnologia. Você pode me encontrar nos seguintes links:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- LinkedIn: [Rafael Santos](https://www.linkedin.com/in/rafael-santos-399458213/)
+- Instagram: [ricodealma](https://www.instagram.com/ricodealma/)
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Agradeço por conferir o meu projeto e espero que ele também possa te ajudar nos seus estudos e práticas de desenvolvimento web! 😄

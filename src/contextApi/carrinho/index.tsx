@@ -1,15 +1,20 @@
 import { ReactElement, createContext, useContext } from "react";
 import { ICarrinho } from "../../interfaces/ICarrinho";
-import { useAdicionarItem, useCarrinho } from "../../graphql/carrinho/hooks";
+import { useAdicionarItem, useCarrinho, useRemoverItem } from "../../graphql/carrinho/hooks";
 import { IItemCarrinho } from "../../interfaces/IItemCarrinho";
 
 export interface ICarrinhoContext {
     carrinho?: ICarrinho
     adicionarItemCarrinho: (item: IItemCarrinho) => void
+    removerItemCarrinho: (item: IItemCarrinho) => void
+    carregando: boolean
 }
 
 export const CarrinhoContext = createContext<ICarrinhoContext>({
-    adicionarItemCarrinho: () => null
+    adicionarItemCarrinho: () => null,
+    removerItemCarrinho: () => null,
+    carregando: false
+
 })
 
 interface CarrinhoProviderProps {
@@ -18,9 +23,12 @@ interface CarrinhoProviderProps {
 
 const CarrinhoProvider = ({ children }: CarrinhoProviderProps) => {
 
-    const { data } = useCarrinho()
+    const { data, loading : loadingCarrinho } = useCarrinho()
 
-    const [adicionaItem] = useAdicionarItem()
+    const [adicionaItem, { loading: loadingAdiciona}] = useAdicionarItem()
+
+    const [removeItem] = useRemoverItem()
+
     const adicionarItemCarrinho = (item: IItemCarrinho) => {
         adicionaItem({
             variables: {
@@ -33,9 +41,26 @@ const CarrinhoProvider = ({ children }: CarrinhoProviderProps) => {
         })
     }
 
+    const removerItemCarrinho = (item: IItemCarrinho) => {
+        removeItem({
+            variables: {
+                item: {
+                    livroId: item.livro.id,
+                    opcaoCompraId: item.opcaoCompra.id,
+                    quantidade: item.quantidade
+                }
+            }
+        })
+    }
+
     return (
         <CarrinhoContext.Provider
-            value={{ carrinho: data?.carrinho, adicionarItemCarrinho }}
+            value={{
+                carrinho: data?.carrinho,
+                adicionarItemCarrinho,
+                removerItemCarrinho,
+                carregando: loadingCarrinho || loadingAdiciona
+            }}
         >
             {children}
         </CarrinhoContext.Provider>
