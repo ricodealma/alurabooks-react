@@ -9,11 +9,16 @@ import { formatador } from "../../utils/formatador-moeda"
 import './Livro.css'
 
 import Loader from "../../componentes/Loader"
+import { useCarrinhoContext } from "../../contextApi/carrinho"
 
 const Livro = () => {
     const params = useParams()
 
+    const { adicionarItemCarrinho } = useCarrinhoContext()
+
     const [opcao, setOpcao] = useState<AbGrupoOpcao>()
+
+    const [quantidade, setQuantidade] = useState(1)
 
     const { data, loading, error } = useLivro(params.slug || '')
 
@@ -22,8 +27,8 @@ const Livro = () => {
         return <h1>Opa ! Algo inesperado aconteceu</h1>
     }
 
-    if(loading){
-        <Loader/>
+    if (loading) {
+        <Loader />
     }
 
     const opcoes: AbGrupoOpcao[] = data?.livro.opcoesCompra ? data?.livro.opcoesCompra.map(opcao => ({
@@ -33,6 +38,22 @@ const Livro = () => {
         rodape: opcao.formatos ? opcao.formatos.join(',') : ''
     }))
         : []
+
+    const aoAdicionarItemAoCarrinho = () => {
+        if (!data?.livro) {
+            return
+        }
+        const opcaoCompra = data.livro.opcoesCompra.find(op => op.id === opcao?.id)
+        if (!opcaoCompra) {
+            alert('Por favor selecione uma opção de compra')
+            return 
+        }
+        adicionarItemCarrinho({
+            livro: data.livro,
+            quantidade,
+            opcaoCompra
+        })
+    }
 
     return (
         <section className="livro-detalhe">
@@ -56,10 +77,10 @@ const Livro = () => {
                         <p><strong>*Você terá acesso às futuras atualizações do livro.</strong></p>
                         <footer>
                             <div className="qtdContainer">
-                                <AbInputQuantidade onChange={() => {}} value={0}/>
+                                <AbInputQuantidade onChange={setQuantidade} value={quantidade} />
                             </div>
                             <div>
-                                <AbBotao texto="Comprar" />
+                                <AbBotao texto="Comprar" onClick={aoAdicionarItemAoCarrinho} />
                             </div>
                         </footer>
                     </div>
@@ -69,7 +90,7 @@ const Livro = () => {
                     <BlocoSobre titulo="Sobre o Autor" corpo={data?.livro.autor.sobre} />
                 </div>
                 <div className="tags">
-                    {data?.livro.tags?.map(tag => <AbTag contexto="secundario" key={tag.nome}  texto={tag.nome} />)}
+                    {data?.livro.tags?.map(tag => <AbTag contexto="secundario" key={tag.nome} texto={tag.nome} />)}
                 </div>
             </div>
         </section>
